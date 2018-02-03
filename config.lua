@@ -1,4 +1,4 @@
 Config                    = {}
-Config.Locale             = 'fr'
-Config.EnableESXIdentity  = false
+Config.Locale             = 'en'
+Config.EnableESXIdentity  = true -- if using esx_identity
 Config.MaxSalary 		  = 3500

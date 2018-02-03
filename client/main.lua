@@ -73,7 +73,8 @@ function OpenBossMenu(society, close, options)
   ESX.UI.Menu.Open(
     'default', GetCurrentResourceName(), 'boss_actions_' .. society,
     {
-      title    = 'Patron',
+      title    = 'Boss',
+	  align    = 'bottom-right',
       elements = elements
     },
     function(data, menu)
@@ -83,7 +84,8 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'withdraw_society_money_amount_' .. society,
           {
-            title = _U('withdraw_amount')
+            title = _U('withdraw_amount'),
+			align = 'bottom-right'
           },
           function(data, menu)
 
@@ -109,7 +111,8 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'deposit_money_amount_' .. society,
           {
-            title = _U('deposit_amount')
+            title = _U('deposit_amount'),
+			align = 'bottom-right'
           },
           function(data, menu)
 
@@ -135,7 +138,8 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'wash_money_amount_' .. society,
           {
-            title = _U('wash_money_amount')
+            title = _U('wash_money_amount'),
+			align = 'bottom-right'
           },
           function(data, menu)
 
@@ -181,6 +185,7 @@ function OpenManageEmployeesMenu(society)
   ESX.UI.Menu.Open(
     'default', GetCurrentResourceName(), 'manage_employees_' .. society,
     {
+	  align = 'bottom-right',
       title    = _U('employee_management'),
       elements = {
         {label = _U('employee_list'), value = 'employee_list'},
@@ -230,7 +235,10 @@ function OpenEmployeeList(society)
 
     ESX.UI.Menu.Open(
       'list', GetCurrentResourceName(), 'employee_list_' .. society,
-      elements,
+      {
+		align    = 'bottom-right',
+        elements = elements
+      },
       function(data, menu)
 
         local employee = data.data
@@ -277,6 +285,7 @@ function OpenRecruitMenu(society)
       'default', GetCurrentResourceName(), 'recruit_' .. society,
       {
         title    = _U('recruiting'),
+		align = 'bottom-right',
         elements = elements
       },
       function(data, menu)
@@ -285,6 +294,7 @@ function OpenRecruitMenu(society)
           'default', GetCurrentResourceName(), 'recruit_confirm_' .. society,
           {
             title    = _U('do_you_want_to_recruit', data.current.name),
+			align    = 'bottom-right',
             elements = {
               {label = _U('yes'), value = 'yes'},
               {label = _U('no'),  value = 'no'},
@@ -335,6 +345,7 @@ function OpenPromoteMenu(society, employee)
       'default', GetCurrentResourceName(), 'promote_employee_' .. society,
       {
         title    = _U('promote_employee', employee.name),
+		align    = 'bottom-right',
         elements = elements
       },
       function(data, menu)
@@ -372,6 +383,7 @@ function OpenManageGradesMenu(society)
       'default', GetCurrentResourceName(), 'manage_grades_' .. society,
       {
         title    = _U('salary_management'),
+		align    = 'bottom-right',
         elements = elements
       },
       function(data, menu)
@@ -379,7 +391,8 @@ function OpenManageGradesMenu(society)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'manage_grades_amount_' .. society,
           {
-            title = _U('salary_amount')
+            title = _U('salary_amount'),
+			align    = 'bottom-right'
           },
           function(data2, menu2)
 
