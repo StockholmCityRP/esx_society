@@ -41,7 +41,7 @@ function OpenBossMenu(society, close, options)
     deposit   = true,
     wash      = true,
     employees = true,
-    grades    = true
+    grades    = false
   }
 
   for k,v in pairs(defaultOptions) do
@@ -84,8 +84,7 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'withdraw_society_money_amount_' .. society,
           {
-            title = _U('withdraw_amount'),
-			align = 'bottom-right'
+            title = _U('withdraw_amount')
           },
           function(data, menu)
 
@@ -111,8 +110,7 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'deposit_money_amount_' .. society,
           {
-            title = _U('deposit_amount'),
-			align = 'bottom-right'
+            title = _U('deposit_amount')
           },
           function(data, menu)
 
@@ -138,8 +136,7 @@ function OpenBossMenu(society, close, options)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'wash_money_amount_' .. society,
           {
-            title = _U('wash_money_amount'),
-			align = 'bottom-right'
+            title = _U('wash_money_amount')
           },
           function(data, menu)
 
@@ -235,10 +232,7 @@ function OpenEmployeeList(society)
 
     ESX.UI.Menu.Open(
       'list', GetCurrentResourceName(), 'employee_list_' .. society,
-      {
-		align    = 'bottom-right',
-        elements = elements
-      },
+      elements,
       function(data, menu)
 
         local employee = data.data
@@ -391,8 +385,7 @@ function OpenManageGradesMenu(society)
         ESX.UI.Menu.Open(
           'dialog', GetCurrentResourceName(), 'manage_grades_amount_' .. society,
           {
-            title = _U('salary_amount'),
-			align    = 'bottom-right'
+            title = _U('salary_amount')
           },
           function(data2, menu2)
 

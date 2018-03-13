@@ -210,7 +210,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
 
         for i=1, #results, 1 do
           table.insert(employees, {
-            name                 = results[i].firstname .. ' ' .. results[i].lastname,
+            name        = results[i].firstname .. ' ' .. results[i].lastname,
             identifier  = results[i].identifier,
             job = {
               name        = results[i].job,
