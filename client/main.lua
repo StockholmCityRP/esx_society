@@ -142,7 +142,7 @@ function OpenBossMenu(society, close, options)
 
             local amount = tonumber(data.value)
 
-            if amount == nil then
+            if amount == nil or amount < 0 then
               ESX.ShowNotification(_U('invalid_amount'))
             else
               menu.close()
