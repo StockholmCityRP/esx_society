@@ -274,31 +274,31 @@ end)
 
 ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, type)
 
-  local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+	local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
 
-  if type == 'hire' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
-  elseif type == 'promote' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
-  elseif type == 'fire' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
-  end
+	if xPlayer ~= nil then
+		xPlayer.setJob(job, grade)
+		
+		if type == 'hire' then
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+		elseif type == 'promote' then
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
+		elseif type == 'fire' then
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+		end
+	end
 
-  if xPlayer ~= nil then
-    xPlayer.setJob(job, grade)
-  end
-
-  MySQL.Async.execute(
-    'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
-    {
-      ['@job']        = job,
-      ['@job_grade']  = grade,
-      ['@identifier'] = identifier
-    },
-    function(rowsChanged)
-      cb()
-    end
-  )
+	MySQL.Async.execute(
+		'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
+		{
+			['@job']        = job,
+			['@job_grade']  = grade,
+			['@identifier'] = identifier
+		},
+		function(rowsChanged)
+			cb()
+		end
+	)
 
 end)
 
